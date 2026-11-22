@@ -97,9 +97,9 @@
     {
       "capability": "verification",
       "source": "-",
-      "outcome": "not started",
-      "status": "pending",
-      "next_action": "build, typecheck, key routes, one create/read flow once a database exists"
+      "outcome": "616 of 619 test files pass; 3 fail (schema-version, migration-replay, migration-rollout) and fail identically in the untouched clone: db/0300 exists while schema.snapshot.json and CODE_SCHEMA_LEVEL are still at 0298. Public routes verified rendering: /, /about, /support, /guide, /features, /self-hosting, /sign, /t, /discover, /sitemap.xml, /robots.txt, /api/public/health",
+      "status": "partial",
+      "next_action": "user decides on schema 0300; signed-in and data checks need a database"
     }
   ]
 }
