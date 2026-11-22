@@ -6,9 +6,9 @@
     {
       "capability": "code",
       "source": "TanStack Start v1 app: 320 route files, MDX docs catalog, wasm, worker, scripts, locales (nl/en/fr/de)",
-      "outcome": "copy source tree into this project; TanStack versions already match the target template",
-      "status": "in_progress",
-      "next_action": "rsync source into /dev-server, install deps, build"
+      "outcome": "source tree copied into this project; TanStack versions already matched the target template; deps installed; build OK",
+      "status": "done",
+      "next_action": "none"
     },
     {
       "capability": "schema",
