@@ -13,30 +13,30 @@
     {
       "capability": "schema",
       "source": "Neon Postgres; 293 SQL migration files in db/ (281 tables inferred), vault_enclave schema, rout_app role, RLS",
-      "outcome": "awaiting user decision: keep Neon or rebuild in Lovable Cloud",
-      "status": "pending_decision",
-      "next_action": "user answers the database question"
+      "outcome": "user chose to keep the existing Neon database; schema stays in Neon, no migrations applied from here",
+      "status": "keep_external",
+      "next_action": "user enters DATABASE_URL via secure form, then verify /api/public/health"
     },
     {
       "capability": "records",
       "source": "Neon; no record export attached",
-      "outcome": "none imported",
-      "status": "pending",
-      "next_action": "request CSV/JSON table exports after the preview"
+      "outcome": "records stay in Neon; no export needed",
+      "status": "keep_external",
+      "next_action": "none"
     },
     {
       "capability": "auth identities",
       "source": "Better Auth, passkey-only registration, OPAQUE, NFC card step-up; tables in Neon",
-      "outcome": "not yet migrated",
-      "status": "pending_decision",
-      "next_action": "depends on database decision"
+      "outcome": "Better Auth tables stay in Neon; same accounts; requires the original BETTER_AUTH_SECRET",
+      "status": "pending",
+      "next_action": "user enters BETTER_AUTH_SECRET; passkeys only work on the origin they were registered on (PUBLIC_ORIGIN)"
     },
     {
       "capability": "authorization",
       "source": "Postgres RLS with rout_app role, SECURITY DEFINER RPCs, vault_enclave deny_all",
-      "outcome": "not yet migrated",
-      "status": "pending_decision",
-      "next_action": "depends on database decision"
+      "outcome": "RLS, rout_app role and SECURITY DEFINER functions stay in Neon unchanged",
+      "status": "keep_external",
+      "next_action": "verify one signed-in read after DATABASE_URL is set"
     },
     {
       "capability": "file storage",
