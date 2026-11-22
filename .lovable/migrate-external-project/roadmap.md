@@ -11,11 +11,11 @@ Ledger: `.lovable/migrate-external-project/ledger.json`.
 
 ## Open
 - [x] Database: keep Neon — DATABASE_URL + BETTER_AUTH_SECRET set, health operational
-- [ ] Records: no export attached — need CSV/JSON table exports plus user rows (email + original user ids).
+- [x] Records: stay in Neon, no export needed
 - [ ] Secrets (remaining): Scaleway S3, Stripe, OMNI_*, CRON_SECRET, Brevo/Postmark mail — requested through the secure secret form once the database choice is settled.
 - [ ] Omni worker (`worker/`): standalone Bun daemon, needs its own host at cutover.
 - [ ] Schedule: `/api/public/cron/cleanup-assets` needs a scheduler after cutover.
-- [ ] Verification: one signed-in create/read/update/delete flow plus an imported user's first-login email verification and new password.
+- [ ] Verification: one signed-in flow with an existing account (passkeys are tied to rout.be, so sign-in on the preview address needs e-mail link or password)
 
 ## Notes
 - `db/` and `db-pending/` are the source's own migration history; they are copied for reference and were never applied automatically.

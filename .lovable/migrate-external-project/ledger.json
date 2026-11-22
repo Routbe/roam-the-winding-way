@@ -13,9 +13,9 @@
     {
       "capability": "schema",
       "source": "Neon Postgres; 293 SQL migration files in db/ (281 tables inferred), vault_enclave schema, rout_app role, RLS",
-      "outcome": "user chose to keep the existing Neon database; schema stays in Neon, no migrations applied from here",
-      "status": "keep_external",
-      "next_action": "user enters DATABASE_URL via secure form, then verify /api/public/health"
+      "outcome": "DATABASE_URL set; /api/public/health operational; app connects as rout_app (not superuser)",
+      "status": "connected",
+      "next_action": "schema 0300 decision still open"
     },
     {
       "capability": "records",
@@ -97,7 +97,7 @@
     {
       "capability": "verification",
       "source": "-",
-      "outcome": "616 of 619 test files pass; 3 fail (schema-version, migration-replay, migration-rollout) and fail identically in the untouched clone: db/0300 exists while schema.snapshot.json and CODE_SCHEMA_LEVEL are still at 0298. Public routes verified rendering: /, /about, /support, /guide, /features, /self-hosting, /sign, /t, /discover, /sitemap.xml, /robots.txt, /api/public/health",
+      "outcome": "616 of 619 test files pass; 3 fail (schema-version, migration-replay, migration-rollout) and fail identically in the untouched clone: db/0300 exists while schema.snapshot.json and CODE_SCHEMA_LEVEL are still at 0298. Public routes verified rendering: /, /about, /support, /guide, /features, /self-hosting, /sign, /t, /discover, /sitemap.xml, /robots.txt, /api/public/health; Neon reachable from preview, sign-in page loads without the not-connected notice",
       "status": "partial",
       "next_action": "user decides on schema 0300; signed-in and data checks need a database"
     }
