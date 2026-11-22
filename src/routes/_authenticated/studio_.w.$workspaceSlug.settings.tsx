@@ -11,6 +11,7 @@ import { ScopeActivationState, isForbidden } from "@/components/workspace/ScopeA
 import { WorkspaceIconPicker } from "@/components/workspace/WorkspaceIconPicker";
 import { RolesOverview } from "@/components/workspace/RolesOverview";
 import { WorkspaceSupportCard } from "@/components/workspace/WorkspaceSupportCard";
+import { WorkspaceTrustPanel } from "@/components/workspace/WorkspaceTrustPanel";
 import { WorkspaceAskInbox } from "@/components/workspace/WorkspaceAskInbox";
 import { isWorkspaceIconKey } from "@/lib/workspace-icons";
 import {
@@ -118,6 +119,7 @@ function WorkspaceSettingsPage() {
 
       <RolesOverview myRole={ws.role} />
 
+      {manage && <WorkspaceTrustPanel workspaceId={ws.id} />}
       {manage && <WorkspaceSupportCard workspaceId={ws.id} slug={ws.slug} />}
 
       {manage && <WorkspaceAskInbox workspaceId={ws.id} slug={ws.slug} />}

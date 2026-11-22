@@ -10,7 +10,7 @@ type Review = { id: string; workspaceSlug: string; workspaceName: string; domain
 
 /** /admin/mandates: 2FA admins review KBO extracts etc. Opening and deciding need Sudo Mode; documents never persist outside the sealed row. */
 export function AdminTrustReviews() {
-  const { t, lang } = useI18n();
+  const { t, locale: lang } = useI18n();
   const qc = useQueryClient();
   const list = useServerFn(adminListTrustReviews);
   const open = useServerFn(adminOpenTrustEvidence);

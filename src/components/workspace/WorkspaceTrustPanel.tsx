@@ -38,7 +38,7 @@ function fileToBase64(file: File): Promise<string> {
 
 /** Studio tab "Verification & trust": the three assurance layers of db/0300. Every rule is enforced server-side. */
 export function WorkspaceTrustPanel({ workspaceId }: { workspaceId: string }) {
-  const { t, lang } = useI18n();
+  const { t, locale: lang } = useI18n();
   const qc = useQueryClient();
   const load = useServerFn(getWorkspaceTrust);
   const q = useQuery({ queryKey: ["workspace-trust", workspaceId], queryFn: () => load({ data: { workspaceId } }), retry: false });
