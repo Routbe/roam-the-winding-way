@@ -14,7 +14,7 @@ import { hkdf } from "@noble/hashes/hkdf.js";
 import { sha256 } from "@noble/hashes/sha2.js";
 import { randomBytes } from "@noble/hashes/utils.js";
 
-const KEK_RE = /^[A-Za-z0-9]{64,512}$/;
+const KEK_RE = /^[A-Za-z0-9]{40,512}$/; // 40+ alphanumerics ≈ 238+ bits
 const MAGIC = Uint8Array.of(0x52, 0x45, 0x56, 0x31); // "REV1"
 const NONCE_LEN = 12;
 export const MAX_EVIDENCE_BYTES = 5 * 1024 * 1024;
