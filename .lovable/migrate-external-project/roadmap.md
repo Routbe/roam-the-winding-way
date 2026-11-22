@@ -10,9 +10,9 @@ Ledger: `.lovable/migrate-external-project/ledger.json`.
 - [x] Public routes verified rendering: `/`, `/about`, `/support`, `/guide`, `/features`, `/self-hosting`, `/sign`, `/t`, `/discover`, `/sitemap.xml`, `/robots.txt`, `/api/public/health`.
 
 ## Open
-- [x] Database decision: keep Neon (DATABASE_URL secret pending)
+- [x] Database: keep Neon — DATABASE_URL + BETTER_AUTH_SECRET set, health operational
 - [ ] Records: no export attached — need CSV/JSON table exports plus user rows (email + original user ids).
-- [ ] Secrets: DATABASE_URL / BETTER_AUTH_SECRET, Scaleway S3, Stripe, OMNI_*, CRON_SECRET, Brevo/Postmark mail — requested through the secure secret form once the database choice is settled.
+- [ ] Secrets (remaining): Scaleway S3, Stripe, OMNI_*, CRON_SECRET, Brevo/Postmark mail — requested through the secure secret form once the database choice is settled.
 - [ ] Omni worker (`worker/`): standalone Bun daemon, needs its own host at cutover.
 - [ ] Schedule: `/api/public/cron/cleanup-assets` needs a scheduler after cutover.
 - [ ] Verification: one signed-in create/read/update/delete flow plus an imported user's first-login email verification and new password.
