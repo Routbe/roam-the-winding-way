@@ -15,7 +15,7 @@ type AdminPath =
   | "/admin" | "/admin/verifications" | "/admin/console" | "/admin/sepa" | "/admin/ops" | "/admin/oauth-apps"
   | "/admin/members" | "/admin/handles" | "/admin/brands" | "/admin/subdomains" | "/admin/workspaces"
   | "/admin/features" | "/admin/integrations" | "/admin/webhooks" | "/admin/custom-badges" | "/admin/finance"
-  | "/admin/gift-cards" | "/admin/cards" | "/admin/contact" | "/admin/infra" | "/admin/team" | "/admin/recovery";
+  | "/admin/gift-cards" | "/admin/cards" | "/admin/contact" | "/admin/infra" | "/admin/team" | "/admin/recovery" | "/admin/mandates";
 type NavItem = { to: AdminPath; label: string; icon: typeof Shield; tab?: AdminConsoleTab };
 
 /**
@@ -34,6 +34,7 @@ export const ADMIN_NAV_GROUPS: ReadonlyArray<{ label: string; items: ReadonlyArr
       { to: "/admin/ops", label: "Telefoon, badges & links", icon: Wrench },
       { to: "/admin/oauth-apps", label: "OAuth-apps", icon: KeyRound },
       { to: "/admin/recovery", label: "Passkey-herstel", icon: Shield },
+      { to: "/admin/mandates", label: "Volmachten", icon: Shield },
     ],
   },
   {

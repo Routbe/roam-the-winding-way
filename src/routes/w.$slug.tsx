@@ -2,6 +2,8 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { HandHeart } from "lucide-react";
 import { getPublicWorkspace } from "@/lib/workspace-public.functions";
 import { getPublicWsSupport } from "@/lib/workspace-support.functions";
+import { getPublicWorkspaceTrust } from "@/lib/org-attestation/attestation.functions";
+import { WorkspaceTrustBadge, type PublicTrust } from "@/components/workspace/WorkspaceTrustBadge";
 import { useI18n } from "@/lib/i18n";
 import { seedWorkspaceStudio, workspaceProfileRecord } from "@/lib/workspace-studio";
 import { ProfileView } from "@/components/profile/ProfileView";
@@ -10,13 +12,15 @@ import { jsonLdScript } from "@/lib/social-meta";
 
 export const Route = createFileRoute("/w/$slug")({
   loader: async ({ params }) => {
-    const [ws, support] = await Promise.all([
+    const [ws, support, trust] = await Promise.all([
       getPublicWorkspace({ data: { slug: params.slug } }),
       getPublicWsSupport({ data: { slug: params.slug } }).catch(() => null),
+      // Absent until db/0300 is live: the badge then simply does not render.
+      getPublicWorkspaceTrust({ data: { slug: params.slug } }).catch(() => null) as Promise<PublicTrust>,
     ]);
     if (!ws) throw notFound();
     // The support link appears only while the workspace's own page is active and eligible.
-    return { ...ws, supportAvailable: Boolean(support) };
+    return { ...ws, supportAvailable: Boolean(support), trust: trust ?? null };
   },
   head: ({ loaderData }) => {
     const title = loaderData ? `${loaderData.name} op ROUT` : "Workspace niet gevonden — ROUT";
@@ -64,6 +68,7 @@ function WorkspacePage() {
   return (
     <main className="min-h-screen bg-background">
       <ProfileView profile={workspaceProfileRecord(ws.slug, payload)} free={!ws.domainVerified} publicPath={workspacePublicPath(ws.slug, { name: ws.domain, verified: ws.domainVerified })} />
+      <div className="px-4"><WorkspaceTrustBadge trust={ws.trust} /></div>
       {ws.supportAvailable && (
         <div className="flex justify-center px-4 pb-12">
           <Link to="/w/$slug/support" params={{ slug: ws.slug }} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-5 text-sm font-medium text-foreground transition-colors hover:border-foreground/40">

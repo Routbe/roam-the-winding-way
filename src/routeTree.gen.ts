@@ -248,6 +248,7 @@ import { Route as AuthenticatedAdminGiftCardsRouteImport } from './routes/_authe
 import { Route as AuthenticatedAdminHandlesRouteImport } from './routes/_authenticated/admin.handles'
 import { Route as AuthenticatedAdminInfraRouteImport } from './routes/_authenticated/admin.infra'
 import { Route as AuthenticatedAdminIntegrationsRouteImport } from './routes/_authenticated/admin.integrations'
+import { Route as AuthenticatedAdminMandatesRouteImport } from './routes/_authenticated/admin.mandates'
 import { Route as AuthenticatedAdminMembersRouteImport } from './routes/_authenticated/admin.members'
 import { Route as AuthenticatedAdminOauthAppsRouteImport } from './routes/_authenticated/admin.oauth-apps'
 import { Route as AuthenticatedAdminOpsRouteImport } from './routes/_authenticated/admin.ops'
@@ -390,6 +391,7 @@ import { Route as ApiPublicBlueskyClientMetadataDotjsonRouteImport } from './rou
 import { Route as ApiPublicBlueskyStartRouteImport } from './routes/api_.public.bluesky.start'
 import { Route as ApiPublicBookingIcsIdRouteImport } from './routes/api_.public.booking-ics.$id'
 import { Route as ApiPublicContactAttachmentRouteImport } from './routes/api_.public.contact.attachment'
+import { Route as ApiPublicCronAttestationSweepRouteImport } from './routes/api_.public.cron.attestation-sweep'
 import { Route as ApiPublicCronAuditCheckpointRouteImport } from './routes/api_.public.cron.audit-checkpoint'
 import { Route as ApiPublicCronAvailabilityRouteImport } from './routes/api_.public.cron.availability'
 import { Route as ApiPublicCronCheckDnsRouteImport } from './routes/api_.public.cron.check-dns'
@@ -1695,6 +1697,12 @@ const AuthenticatedAdminIntegrationsRoute =
     path: '/integrations',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminMandatesRoute =
+  AuthenticatedAdminMandatesRouteImport.update({
+    id: '/mandates',
+    path: '/mandates',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminMembersRoute =
   AuthenticatedAdminMembersRouteImport.update({
     id: '/members',
@@ -2463,6 +2471,12 @@ const ApiPublicContactAttachmentRoute =
     path: '/api/public/contact/attachment',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicCronAttestationSweepRoute =
+  ApiPublicCronAttestationSweepRouteImport.update({
+    id: '/api_/public/cron/attestation-sweep',
+    path: '/api/public/cron/attestation-sweep',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicCronAuditCheckpointRoute =
   ApiPublicCronAuditCheckpointRouteImport.update({
     id: '/api_/public/cron/audit-checkpoint',
@@ -3204,6 +3218,7 @@ export interface FileRoutesByFullPath {
   '/admin/handles': typeof AuthenticatedAdminHandlesRoute
   '/admin/infra': typeof AuthenticatedAdminInfraRoute
   '/admin/integrations': typeof AuthenticatedAdminIntegrationsRoute
+  '/admin/mandates': typeof AuthenticatedAdminMandatesRoute
   '/admin/members': typeof AuthenticatedAdminMembersRoute
   '/admin/oauth-apps': typeof AuthenticatedAdminOauthAppsRoute
   '/admin/ops': typeof AuthenticatedAdminOpsRoute
@@ -3346,6 +3361,7 @@ export interface FileRoutesByFullPath {
   '/api/public/bluesky/start': typeof ApiPublicBlueskyStartRoute
   '/api/public/booking-ics/$id': typeof ApiPublicBookingIcsIdRoute
   '/api/public/contact/attachment': typeof ApiPublicContactAttachmentRoute
+  '/api/public/cron/attestation-sweep': typeof ApiPublicCronAttestationSweepRoute
   '/api/public/cron/audit-checkpoint': typeof ApiPublicCronAuditCheckpointRoute
   '/api/public/cron/availability': typeof ApiPublicCronAvailabilityRoute
   '/api/public/cron/check-dns': typeof ApiPublicCronCheckDnsRoute
@@ -3660,6 +3676,7 @@ export interface FileRoutesByTo {
   '/admin/handles': typeof AuthenticatedAdminHandlesRoute
   '/admin/infra': typeof AuthenticatedAdminInfraRoute
   '/admin/integrations': typeof AuthenticatedAdminIntegrationsRoute
+  '/admin/mandates': typeof AuthenticatedAdminMandatesRoute
   '/admin/members': typeof AuthenticatedAdminMembersRoute
   '/admin/oauth-apps': typeof AuthenticatedAdminOauthAppsRoute
   '/admin/ops': typeof AuthenticatedAdminOpsRoute
@@ -3800,6 +3817,7 @@ export interface FileRoutesByTo {
   '/api/public/bluesky/start': typeof ApiPublicBlueskyStartRoute
   '/api/public/booking-ics/$id': typeof ApiPublicBookingIcsIdRoute
   '/api/public/contact/attachment': typeof ApiPublicContactAttachmentRoute
+  '/api/public/cron/attestation-sweep': typeof ApiPublicCronAttestationSweepRoute
   '/api/public/cron/audit-checkpoint': typeof ApiPublicCronAuditCheckpointRoute
   '/api/public/cron/availability': typeof ApiPublicCronAvailabilityRoute
   '/api/public/cron/check-dns': typeof ApiPublicCronCheckDnsRoute
@@ -4131,6 +4149,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/handles': typeof AuthenticatedAdminHandlesRoute
   '/_authenticated/admin/infra': typeof AuthenticatedAdminInfraRoute
   '/_authenticated/admin/integrations': typeof AuthenticatedAdminIntegrationsRoute
+  '/_authenticated/admin/mandates': typeof AuthenticatedAdminMandatesRoute
   '/_authenticated/admin/members': typeof AuthenticatedAdminMembersRoute
   '/_authenticated/admin/oauth-apps': typeof AuthenticatedAdminOauthAppsRoute
   '/_authenticated/admin/ops': typeof AuthenticatedAdminOpsRoute
@@ -4273,6 +4292,7 @@ export interface FileRoutesById {
   '/api_/public/bluesky/start': typeof ApiPublicBlueskyStartRoute
   '/api_/public/booking-ics/$id': typeof ApiPublicBookingIcsIdRoute
   '/api_/public/contact/attachment': typeof ApiPublicContactAttachmentRoute
+  '/api_/public/cron/attestation-sweep': typeof ApiPublicCronAttestationSweepRoute
   '/api_/public/cron/audit-checkpoint': typeof ApiPublicCronAuditCheckpointRoute
   '/api_/public/cron/availability': typeof ApiPublicCronAvailabilityRoute
   '/api_/public/cron/check-dns': typeof ApiPublicCronCheckDnsRoute
@@ -4604,6 +4624,7 @@ export interface FileRouteTypes {
     | '/admin/handles'
     | '/admin/infra'
     | '/admin/integrations'
+    | '/admin/mandates'
     | '/admin/members'
     | '/admin/oauth-apps'
     | '/admin/ops'
@@ -4746,6 +4767,7 @@ export interface FileRouteTypes {
     | '/api/public/bluesky/start'
     | '/api/public/booking-ics/$id'
     | '/api/public/contact/attachment'
+    | '/api/public/cron/attestation-sweep'
     | '/api/public/cron/audit-checkpoint'
     | '/api/public/cron/availability'
     | '/api/public/cron/check-dns'
@@ -5060,6 +5082,7 @@ export interface FileRouteTypes {
     | '/admin/handles'
     | '/admin/infra'
     | '/admin/integrations'
+    | '/admin/mandates'
     | '/admin/members'
     | '/admin/oauth-apps'
     | '/admin/ops'
@@ -5200,6 +5223,7 @@ export interface FileRouteTypes {
     | '/api/public/bluesky/start'
     | '/api/public/booking-ics/$id'
     | '/api/public/contact/attachment'
+    | '/api/public/cron/attestation-sweep'
     | '/api/public/cron/audit-checkpoint'
     | '/api/public/cron/availability'
     | '/api/public/cron/check-dns'
@@ -5530,6 +5554,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/handles'
     | '/_authenticated/admin/infra'
     | '/_authenticated/admin/integrations'
+    | '/_authenticated/admin/mandates'
     | '/_authenticated/admin/members'
     | '/_authenticated/admin/oauth-apps'
     | '/_authenticated/admin/ops'
@@ -5672,6 +5697,7 @@ export interface FileRouteTypes {
     | '/api_/public/bluesky/start'
     | '/api_/public/booking-ics/$id'
     | '/api_/public/contact/attachment'
+    | '/api_/public/cron/attestation-sweep'
     | '/api_/public/cron/audit-checkpoint'
     | '/api_/public/cron/availability'
     | '/api_/public/cron/check-dns'
@@ -5962,6 +5988,7 @@ export interface RootRouteChildren {
   ApiPublicBlueskyStartRoute: typeof ApiPublicBlueskyStartRoute
   ApiPublicBookingIcsIdRoute: typeof ApiPublicBookingIcsIdRoute
   ApiPublicContactAttachmentRoute: typeof ApiPublicContactAttachmentRoute
+  ApiPublicCronAttestationSweepRoute: typeof ApiPublicCronAttestationSweepRoute
   ApiPublicCronAuditCheckpointRoute: typeof ApiPublicCronAuditCheckpointRoute
   ApiPublicCronAvailabilityRoute: typeof ApiPublicCronAvailabilityRoute
   ApiPublicCronCheckDnsRoute: typeof ApiPublicCronCheckDnsRoute
@@ -7707,6 +7734,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIntegrationsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/mandates': {
+      id: '/_authenticated/admin/mandates'
+      path: '/mandates'
+      fullPath: '/admin/mandates'
+      preLoaderRoute: typeof AuthenticatedAdminMandatesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/members': {
       id: '/_authenticated/admin/members'
       path: '/members'
@@ -8701,6 +8735,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicContactAttachmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api_/public/cron/attestation-sweep': {
+      id: '/api_/public/cron/attestation-sweep'
+      path: '/api/public/cron/attestation-sweep'
+      fullPath: '/api/public/cron/attestation-sweep'
+      preLoaderRoute: typeof ApiPublicCronAttestationSweepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api_/public/cron/audit-checkpoint': {
       id: '/api_/public/cron/audit-checkpoint'
       path: '/api/public/cron/audit-checkpoint'
@@ -9339,6 +9380,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminHandlesRoute: typeof AuthenticatedAdminHandlesRoute
   AuthenticatedAdminInfraRoute: typeof AuthenticatedAdminInfraRoute
   AuthenticatedAdminIntegrationsRoute: typeof AuthenticatedAdminIntegrationsRoute
+  AuthenticatedAdminMandatesRoute: typeof AuthenticatedAdminMandatesRoute
   AuthenticatedAdminMembersRoute: typeof AuthenticatedAdminMembersRoute
   AuthenticatedAdminOauthAppsRoute: typeof AuthenticatedAdminOauthAppsRoute
   AuthenticatedAdminOpsRoute: typeof AuthenticatedAdminOpsRoute
@@ -9364,6 +9406,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminHandlesRoute: AuthenticatedAdminHandlesRoute,
   AuthenticatedAdminInfraRoute: AuthenticatedAdminInfraRoute,
   AuthenticatedAdminIntegrationsRoute: AuthenticatedAdminIntegrationsRoute,
+  AuthenticatedAdminMandatesRoute: AuthenticatedAdminMandatesRoute,
   AuthenticatedAdminMembersRoute: AuthenticatedAdminMembersRoute,
   AuthenticatedAdminOauthAppsRoute: AuthenticatedAdminOauthAppsRoute,
   AuthenticatedAdminOpsRoute: AuthenticatedAdminOpsRoute,
@@ -10162,6 +10205,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiPublicBlueskyStartRoute: ApiPublicBlueskyStartRoute,
   ApiPublicBookingIcsIdRoute: ApiPublicBookingIcsIdRoute,
   ApiPublicContactAttachmentRoute: ApiPublicContactAttachmentRoute,
+  ApiPublicCronAttestationSweepRoute: ApiPublicCronAttestationSweepRoute,
   ApiPublicCronAuditCheckpointRoute: ApiPublicCronAuditCheckpointRoute,
   ApiPublicCronAvailabilityRoute: ApiPublicCronAvailabilityRoute,
   ApiPublicCronCheckDnsRoute: ApiPublicCronCheckDnsRoute,
