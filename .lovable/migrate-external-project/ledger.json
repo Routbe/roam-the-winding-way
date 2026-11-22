@@ -1,0 +1,105 @@
+{
+  "source": "github:Routbe/route-roam-f03d1a97@main",
+  "target": "this Lovable project (tanstack_start_ts_current)",
+  "detected_at": "2026-11-22T12:34:00Z",
+  "capabilities": [
+    {
+      "capability": "code",
+      "source": "TanStack Start v1 app: 320 route files, MDX docs catalog, wasm, worker, scripts, locales (nl/en/fr/de)",
+      "outcome": "copy source tree into this project; TanStack versions already match the target template",
+      "status": "in_progress",
+      "next_action": "rsync source into /dev-server, install deps, build"
+    },
+    {
+      "capability": "schema",
+      "source": "Neon Postgres; 293 SQL migration files in db/ (281 tables inferred), vault_enclave schema, rout_app role, RLS",
+      "outcome": "awaiting user decision: keep Neon or rebuild in Lovable Cloud",
+      "status": "pending_decision",
+      "next_action": "user answers the database question"
+    },
+    {
+      "capability": "records",
+      "source": "Neon; no record export attached",
+      "outcome": "none imported",
+      "status": "pending",
+      "next_action": "request CSV/JSON table exports after the preview"
+    },
+    {
+      "capability": "auth identities",
+      "source": "Better Auth, passkey-only registration, OPAQUE, NFC card step-up; tables in Neon",
+      "outcome": "not yet migrated",
+      "status": "pending_decision",
+      "next_action": "depends on database decision"
+    },
+    {
+      "capability": "authorization",
+      "source": "Postgres RLS with rout_app role, SECURITY DEFINER RPCs, vault_enclave deny_all",
+      "outcome": "not yet migrated",
+      "status": "pending_decision",
+      "next_action": "depends on database decision"
+    },
+    {
+      "capability": "file storage",
+      "source": "Scaleway S3 (SCALEWAY_* / S3_* variables)",
+      "outcome": "preserve provider",
+      "status": "pending",
+      "next_action": "request Scaleway keys securely at verification"
+    },
+    {
+      "capability": "payments",
+      "source": "Stripe (@stripe/stripe-js, @stripe/react-stripe-js)",
+      "outcome": "preserve provider",
+      "status": "pending",
+      "next_action": "request Stripe keys securely at verification"
+    },
+    {
+      "capability": "email",
+      "source": "@react-email/components + @react-email/render templates in src/emails",
+      "outcome": "preserve templates",
+      "status": "pending",
+      "next_action": "confirm delivery provider at verification"
+    },
+    {
+      "capability": "schedules",
+      "source": "vercel.json cron -> /api/public/cron/cleanup-assets (CRON_SECRET)",
+      "outcome": "preserve endpoint",
+      "status": "pending",
+      "next_action": "re-point scheduler at cutover"
+    },
+    {
+      "capability": "public endpoints / OAuth / webhooks",
+      "source": "src/routes/api/** including OIDC provider, telegram webhook, cron",
+      "outcome": "preserve paths unchanged",
+      "status": "pending",
+      "next_action": "verify after secrets"
+    },
+    {
+      "capability": "omni worker",
+      "source": "worker/ standalone Bun/Node daemon (Sharp/FFmpeg, LISTEN)",
+      "outcome": "code preserved; runs outside the web app",
+      "status": "pending",
+      "next_action": "host separately at cutover"
+    },
+    {
+      "capability": "secrets",
+      "source": "DATABASE_URL, BETTER_AUTH_SECRET, SCALEWAY_*, Stripe, OMNI_*, STEAM/Last.fm, CRON_SECRET and others",
+      "outcome": "not copied; will be requested through the secure secret form",
+      "status": "pending",
+      "next_action": "request values immediately before verification"
+    },
+    {
+      "capability": "cutover",
+      "source": "Vercel / previous host",
+      "outcome": "not started",
+      "status": "pending",
+      "next_action": "after verification"
+    },
+    {
+      "capability": "verification",
+      "source": "-",
+      "outcome": "not started",
+      "status": "pending",
+      "next_action": "build, typecheck, key routes, one create/read flow once a database exists"
+    }
+  ]
+}
