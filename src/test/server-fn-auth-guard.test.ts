@@ -13,6 +13,7 @@ import { expect, it } from "vitest";
 const GUARDS = ["requireAuth", "requireDeveloperAccess", "optionalAuth"];
 
 const PUBLIC_SERVER_FNS = new Set([
+  "src/lib/org-attestation/attestation.functions.ts#getPublicWorkspaceTrust",
   "src/lib/admin-platform.functions.ts#getPlatformFeatures",
   "src/lib/agent/connect.functions.ts#getConnectClient",
   "src/lib/alias-profile.functions.ts#getPublicAliasProfileByHandle",
