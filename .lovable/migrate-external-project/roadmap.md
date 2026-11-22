@@ -10,7 +10,7 @@ Ledger: `.lovable/migrate-external-project/ledger.json`.
 - [x] Public routes verified rendering: `/`, `/about`, `/support`, `/guide`, `/features`, `/self-hosting`, `/sign`, `/t`, `/discover`, `/sitemap.xml`, `/robots.txt`, `/api/public/health`.
 
 ## Open
-- [ ] Database decision (asked): keep Neon, or rebuild in Lovable Cloud. Blocks auth, data pages, and every server flow.
+- [x] Database decision: keep Neon (DATABASE_URL secret pending)
 - [ ] Records: no export attached — need CSV/JSON table exports plus user rows (email + original user ids).
 - [ ] Secrets: DATABASE_URL / BETTER_AUTH_SECRET, Scaleway S3, Stripe, OMNI_*, CRON_SECRET, Brevo/Postmark mail — requested through the secure secret form once the database choice is settled.
 - [ ] Omni worker (`worker/`): standalone Bun daemon, needs its own host at cutover.
