@@ -15,7 +15,8 @@ import { evidenceConfigured, openEvidence, sealEvidence, sniffMime } from "./evi
 import type { EvidenceMime } from "./evidence-vault.server";
 import { emailOnDomain, evidenceDigest, normalizeDomain, organisationNullifier, toHex } from "./proofs";
 
-type Json = Record<string, unknown> | null;
+export type JsonValue = string | number | boolean | null | JsonValue[] | { [k: string]: JsonValue };
+type Json = { [k: string]: JsonValue } | null;
 const enc = new TextEncoder();
 
 async function rpc(fn: string, args: unknown[]): Promise<unknown> {
@@ -152,7 +153,7 @@ export async function withdrawEvidence(id: string) {
 // ---------------------------------------------------------------- admin
 
 export async function adminReviews() {
-  return (await rpc("rout_admin_trust_reviews", [])) as unknown[] | null;
+  return (await rpc("rout_admin_trust_reviews", [])) as JsonValue[] | null;
 }
 
 /** Opens one document for the admin view; returned as base64 and never stored. */
@@ -185,7 +186,7 @@ export async function attestationSweep(limit = 100) {
     const out = String(await rpc("rout_trust_domain_report", [s.id, proof.status === "present"]));
     if (out === "ok") tally.ok++; else if (out === "failing") tally.failing++; else if (out === "lapsed") tally.lapsed++;
   }
-  const maintenance = await rpc("rout_trust_maintenance", []);
+  const maintenance = (await rpc("rout_trust_maintenance", [])) as JsonValue;
   return { domains: tally, maintenance };
 }
 
