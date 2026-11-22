@@ -248,6 +248,7 @@ import { Route as AuthenticatedAdminGiftCardsRouteImport } from './routes/_authe
 import { Route as AuthenticatedAdminHandlesRouteImport } from './routes/_authenticated/admin.handles'
 import { Route as AuthenticatedAdminInfraRouteImport } from './routes/_authenticated/admin.infra'
 import { Route as AuthenticatedAdminIntegrationsRouteImport } from './routes/_authenticated/admin.integrations'
+import { Route as AuthenticatedAdminMandatesRouteImport } from './routes/_authenticated/admin.mandates'
 import { Route as AuthenticatedAdminMembersRouteImport } from './routes/_authenticated/admin.members'
 import { Route as AuthenticatedAdminOauthAppsRouteImport } from './routes/_authenticated/admin.oauth-apps'
 import { Route as AuthenticatedAdminOpsRouteImport } from './routes/_authenticated/admin.ops'
@@ -1694,6 +1695,12 @@ const AuthenticatedAdminIntegrationsRoute =
   AuthenticatedAdminIntegrationsRouteImport.update({
     id: '/integrations',
     path: '/integrations',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminMandatesRoute =
+  AuthenticatedAdminMandatesRouteImport.update({
+    id: '/mandates',
+    path: '/mandates',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
 const AuthenticatedAdminMembersRoute =
@@ -3211,6 +3218,7 @@ export interface FileRoutesByFullPath {
   '/admin/handles': typeof AuthenticatedAdminHandlesRoute
   '/admin/infra': typeof AuthenticatedAdminInfraRoute
   '/admin/integrations': typeof AuthenticatedAdminIntegrationsRoute
+  '/admin/mandates': typeof AuthenticatedAdminMandatesRoute
   '/admin/members': typeof AuthenticatedAdminMembersRoute
   '/admin/oauth-apps': typeof AuthenticatedAdminOauthAppsRoute
   '/admin/ops': typeof AuthenticatedAdminOpsRoute
@@ -3668,6 +3676,7 @@ export interface FileRoutesByTo {
   '/admin/handles': typeof AuthenticatedAdminHandlesRoute
   '/admin/infra': typeof AuthenticatedAdminInfraRoute
   '/admin/integrations': typeof AuthenticatedAdminIntegrationsRoute
+  '/admin/mandates': typeof AuthenticatedAdminMandatesRoute
   '/admin/members': typeof AuthenticatedAdminMembersRoute
   '/admin/oauth-apps': typeof AuthenticatedAdminOauthAppsRoute
   '/admin/ops': typeof AuthenticatedAdminOpsRoute
@@ -4140,6 +4149,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/handles': typeof AuthenticatedAdminHandlesRoute
   '/_authenticated/admin/infra': typeof AuthenticatedAdminInfraRoute
   '/_authenticated/admin/integrations': typeof AuthenticatedAdminIntegrationsRoute
+  '/_authenticated/admin/mandates': typeof AuthenticatedAdminMandatesRoute
   '/_authenticated/admin/members': typeof AuthenticatedAdminMembersRoute
   '/_authenticated/admin/oauth-apps': typeof AuthenticatedAdminOauthAppsRoute
   '/_authenticated/admin/ops': typeof AuthenticatedAdminOpsRoute
@@ -4614,6 +4624,7 @@ export interface FileRouteTypes {
     | '/admin/handles'
     | '/admin/infra'
     | '/admin/integrations'
+    | '/admin/mandates'
     | '/admin/members'
     | '/admin/oauth-apps'
     | '/admin/ops'
@@ -5071,6 +5082,7 @@ export interface FileRouteTypes {
     | '/admin/handles'
     | '/admin/infra'
     | '/admin/integrations'
+    | '/admin/mandates'
     | '/admin/members'
     | '/admin/oauth-apps'
     | '/admin/ops'
@@ -5542,6 +5554,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/handles'
     | '/_authenticated/admin/infra'
     | '/_authenticated/admin/integrations'
+    | '/_authenticated/admin/mandates'
     | '/_authenticated/admin/members'
     | '/_authenticated/admin/oauth-apps'
     | '/_authenticated/admin/ops'
@@ -7721,6 +7734,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIntegrationsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/mandates': {
+      id: '/_authenticated/admin/mandates'
+      path: '/mandates'
+      fullPath: '/admin/mandates'
+      preLoaderRoute: typeof AuthenticatedAdminMandatesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/members': {
       id: '/_authenticated/admin/members'
       path: '/members'
@@ -9360,6 +9380,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminHandlesRoute: typeof AuthenticatedAdminHandlesRoute
   AuthenticatedAdminInfraRoute: typeof AuthenticatedAdminInfraRoute
   AuthenticatedAdminIntegrationsRoute: typeof AuthenticatedAdminIntegrationsRoute
+  AuthenticatedAdminMandatesRoute: typeof AuthenticatedAdminMandatesRoute
   AuthenticatedAdminMembersRoute: typeof AuthenticatedAdminMembersRoute
   AuthenticatedAdminOauthAppsRoute: typeof AuthenticatedAdminOauthAppsRoute
   AuthenticatedAdminOpsRoute: typeof AuthenticatedAdminOpsRoute
@@ -9385,6 +9406,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminHandlesRoute: AuthenticatedAdminHandlesRoute,
   AuthenticatedAdminInfraRoute: AuthenticatedAdminInfraRoute,
   AuthenticatedAdminIntegrationsRoute: AuthenticatedAdminIntegrationsRoute,
+  AuthenticatedAdminMandatesRoute: AuthenticatedAdminMandatesRoute,
   AuthenticatedAdminMembersRoute: AuthenticatedAdminMembersRoute,
   AuthenticatedAdminOauthAppsRoute: AuthenticatedAdminOauthAppsRoute,
   AuthenticatedAdminOpsRoute: AuthenticatedAdminOpsRoute,
